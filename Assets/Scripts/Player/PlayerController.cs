@@ -10,6 +10,7 @@ namespace CosmicCuration.Player
     {
         // Dependencies
         private PlayerView playerView;
+        private BulletPool bulletPool;
         private PlayerScriptableObject playerScriptableObject;
         private BulletView bulletPrefab;
         private BulletScriptableObject bulletScriptableObject;
@@ -26,8 +27,11 @@ namespace CosmicCuration.Player
             playerView = Object.Instantiate(playerViewPrefab);
             playerView.SetController(this);
             this.playerScriptableObject = playerScriptableObject;
-            this.bulletPrefab = bulletPrefab;
-            this.bulletScriptableObject = bulletScriptableObject;
+
+            bulletPool = new BulletPool(bulletPrefab, bulletScriptableObject);
+
+            // this.bulletPrefab = bulletPrefab;
+            // this.bulletScriptableObject = bulletScriptableObject;
 
             InitializeVariables();
         }

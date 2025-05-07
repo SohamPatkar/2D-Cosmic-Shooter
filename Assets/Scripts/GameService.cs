@@ -8,9 +8,8 @@ using CosmicCuration.VFX;
 using CosmicCuration.Player;
 using CosmicCuration.UI;
 using CosmicCuration.Utilities;
-using CosmicCuration.PowerUps; 
+using CosmicCuration.PowerUps;
 #endregion
-
 
 public class GameService : GenericMonoSingleton<GameService>
 {
@@ -72,7 +71,7 @@ public class GameService : GenericMonoSingleton<GameService>
 
     public SoundService GetSoundService() => soundService;
 
-    public UIView GetUIService() => uiService; 
+    public UIView GetUIService() => uiService;
     #endregion
 
 }
