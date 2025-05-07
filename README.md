@@ -1,2 +1,2 @@
-# Cosmic-Curation
+# Cosmic-Shooter
 
