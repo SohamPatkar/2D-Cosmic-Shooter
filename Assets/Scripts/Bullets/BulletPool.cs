@@ -15,6 +15,30 @@ namespace CosmicCuration.Bullets
             this.bulletScriptableObject = bulletScriptableObject;
         }
 
+        public BulletController GetBullet()
+        {
+            if (pooledBullets.Count > 0)
+            {
+                PooledBullets pooledBullet = pooledBullets.Find(bullet => !bullet.isUsed);
+
+                if (pooledBullet != null)
+                {
+                    pooledBullet.isUsed = true;
+                    return pooledBullet.bulletController;
+                }
+            }
+
+            return CreateNewPooledBullet();
+        }
+
+        private BulletController CreateNewPooledBullet()
+        {
+            PooledBullets pooledBullet = new PooledBullets();
+            pooledBullet.isUsed = true;
+            pooledBullet.bulletController = new BulletController(bulletView, bulletScriptableObject);
+            return pooledBullet.bulletController;
+        }
+
         public class PooledBullets
         {
             public BulletController bulletController;
