@@ -39,6 +39,12 @@ namespace CosmicCuration.Utilities
             throw new NotImplementedException("Please use create Item");
         }
 
+        public void ReturnItem(T item)
+        {
+            PooledItem<T> pooledItem = pooledItems.Find(item => item.Equals(item.Item));
+            pooledItem.isUsed = false;
+        }
+
         public class PooledItem<T>
         {
             public T Item;
