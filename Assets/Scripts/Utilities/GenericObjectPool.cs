@@ -20,12 +20,20 @@ public class GenericObjectPool<T> where T : class
             }
         }
 
-        return CreateItem();
+        return CreatePooledItem();
     }
 
-    private T CreateItem()
+    private T CreatePooledItem()
     {
-        throw new NotImplementedException("Not Implemented the create item");
+        PooledItem<T> pooledItem = new PooledItem<T>();
+        pooledItem.Item = CreateItem();
+        pooledItem.isUsed = true;
+        return pooledItem.Item;
+    }
+
+    public T CreateItem()
+    {
+        throw new NotImplementedException("Please use create Item");
     }
 
     public class PooledItem<T>
