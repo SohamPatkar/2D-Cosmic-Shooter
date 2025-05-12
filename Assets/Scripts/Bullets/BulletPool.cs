@@ -17,11 +17,10 @@ namespace CosmicCuration.Bullets
 
         public BulletController GetBullet()
         {
-            return GetItem();
+            return GetItem<BulletController>();
         }
 
-
-        protected override BulletController CreateItem()
+        protected override BulletController CreateItem<T>()
         {
             return new BulletController(bulletView, bulletScriptableObject);
         }

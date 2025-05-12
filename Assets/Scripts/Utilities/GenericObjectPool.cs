@@ -10,11 +10,11 @@ namespace CosmicCuration.Utilities
     {
         private List<PooledItem<T>> pooledItems = new List<PooledItem<T>>();
 
-        protected T GetItem()
+        protected virtual T GetItem<U>() where U : T
         {
             if (pooledItems.Count > 0)
             {
-                PooledItem<T> pooledItem = pooledItems.Find(item => !item.isUsed);
+                PooledItem<T> pooledItem = pooledItems.Find(item => !item.isUsed && item.Item is U);
 
                 if (pooledItem != null)
                 {
@@ -23,26 +23,26 @@ namespace CosmicCuration.Utilities
                 }
             }
 
-            return CreatePooledItem();
+            return CreatePooledItem<U>();
         }
 
-        private T CreatePooledItem()
+        private T CreatePooledItem<U>() where U : T
         {
-            PooledItem<T> pooledItem = new PooledItem<T>();
-            pooledItem.Item = CreateItem();
-            pooledItem.isUsed = true;
-            pooledItems.Add(pooledItem);
-            return pooledItem.Item;
+            PooledItem<T> newItem = new PooledItem<T>();
+            newItem.Item = CreateItem<U>();
+            newItem.isUsed = true;
+            pooledItems.Add(newItem);
+            return newItem.Item;
         }
 
-        protected virtual T CreateItem()
+        protected virtual T CreateItem<U>() where U : T
         {
             throw new NotImplementedException("Please use create Item");
         }
 
         public void ReturnItem(T item)
         {
-            PooledItem<T> pooledItem = pooledItems.Find(item => item.Equals(item.Item));
+            PooledItem<T> pooledItem = pooledItems.Find(item => item.Equals(item));
             pooledItem.isUsed = false;
         }
 

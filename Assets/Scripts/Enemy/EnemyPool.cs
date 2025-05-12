@@ -17,9 +17,9 @@ namespace CosmicCuration.Enemy
             this.enemyView = enemyView;
         }
 
-        public EnemyController GetEnemy() => GetItem();
+        public EnemyController GetEnemy() => GetItem<EnemyController>();
 
-        protected override EnemyController CreateItem()
+        protected override EnemyController CreateItem<T>()
         {
             return new EnemyController(enemyView, enemyScriptableObject.enemyData);
         }

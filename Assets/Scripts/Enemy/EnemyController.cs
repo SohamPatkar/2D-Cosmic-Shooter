@@ -27,7 +27,6 @@ namespace CosmicCuration.Enemy
 
         public void Configure(Vector3 positionToSet, EnemyOrientation enemyOrientation)
         {
-            enemyView.gameObject.SetActive(true);
             enemyView.transform.position = positionToSet;
             SetEnemyOrientation(enemyOrientation);
 
@@ -35,6 +34,7 @@ namespace CosmicCuration.Enemy
             currentHealth = enemyData.maxHealth;
             speed = Random.Range(enemyData.minimumSpeed, enemyData.maximumSpeed);
             movementTimer = enemyData.movementDuration;
+            enemyView.gameObject.SetActive(true);
         }
 
         private void SetEnemyOrientation(EnemyOrientation orientation)
