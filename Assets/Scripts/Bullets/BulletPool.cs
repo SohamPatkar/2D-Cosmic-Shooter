@@ -15,7 +15,11 @@ namespace CosmicCuration.Bullets
             this.bulletScriptableObject = bulletScriptableObject;
         }
 
-        public BulletController GetBullet() => GetItem();
+        public BulletController GetBullet()
+        {
+            return GetItem();
+        }
+
 
         protected override BulletController CreateItem()
         {
