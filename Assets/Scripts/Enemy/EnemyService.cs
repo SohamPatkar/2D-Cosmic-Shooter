@@ -108,7 +108,7 @@ namespace CosmicCuration.Enemy
         }
 
         private void ResetSpawnTimer() => spawnTimer = currentSpawnRate;
-        public void ReturnEnemyToPool(EnemyController returnEnemyController) => enemyPool.ReturnEnemyToPool(returnEnemyController);
+        public void ReturnEnemyToPool(EnemyController returnEnemyController) => enemyPool.ReturnItem(returnEnemyController);
         public void SetEnemySpawning(bool setActive) => isSpawning = setActive;
     }
 
