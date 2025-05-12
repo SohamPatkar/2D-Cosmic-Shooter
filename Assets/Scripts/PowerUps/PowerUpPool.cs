@@ -33,7 +33,6 @@ public class PowerUpPool : GenericObjectPool<PowerUpController>
         {
             throw new NotSupportedException("Power up not supported");
         }
-
     }
 
 
