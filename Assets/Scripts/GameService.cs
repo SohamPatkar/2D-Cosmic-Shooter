@@ -9,6 +9,7 @@ using CosmicCuration.Player;
 using CosmicCuration.UI;
 using CosmicCuration.Utilities;
 using CosmicCuration.PowerUps;
+using System.Collections.Generic;
 #endregion
 
 public class GameService : GenericMonoSingleton<GameService>
@@ -20,6 +21,7 @@ public class GameService : GenericMonoSingleton<GameService>
     private PowerUpService powerUpService;
     private VFXService vfxService;
     private SoundService soundService;
+    [SerializeField] private VFXView vfxPrefab;
     [SerializeField] private UIView uiService;
 
     #endregion
@@ -36,7 +38,6 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private EnemyScriptableObject enemyScriptableObject;
     [SerializeField] private PowerUpScriptableObject powerUpScriptableObject;
     [SerializeField] private SoundScriptableObject soundScriptableObject;
-    [SerializeField] private VFXScriptableObject vfxScriptableObject;
     #endregion
 
     #region Scene References
@@ -51,7 +52,7 @@ public class GameService : GenericMonoSingleton<GameService>
         playerService = new PlayerService(playerPrefab, playerScriptableObject, playerBulletPrefab, playerBulletScriptableObject);
         powerUpService = new PowerUpService(powerUpScriptableObject);
         enemyService = new EnemyService(enemyPrefab, enemyScriptableObject);
-        vfxService = new VFXService(vfxScriptableObject);
+        vfxService = new VFXService(vfxPrefab);
     }
 
     private void Update()

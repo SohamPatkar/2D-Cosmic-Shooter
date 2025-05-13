@@ -2287,14 +2287,50 @@ PrefabInstance:
       objectReference: {fileID: 1030558812}
     - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
         type: 3}
+      propertyPath: vfxPrefab
+      value: 
+      objectReference: {fileID: 2674352075565639642, guid: c68733eb7fedaae4299ec0fea2f96c42,
+        type: 3}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
       propertyPath: audioEffectSource
       value: 
       objectReference: {fileID: 2057518303}
     - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
         type: 3}
+      propertyPath: vfxData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
       propertyPath: backgroundMusicSource
       value: 
       objectReference: {fileID: 1857296444}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
+      propertyPath: vfxData.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
+      propertyPath: vfxData.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
+      propertyPath: vfxData.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
+      propertyPath: vfxData.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364658040279970260, guid: 059d6c966602d204f8b1f0c5d6dff02d,
+        type: 3}
+      propertyPath: vfxData.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1364658040279970262, guid: 059d6c966602d204f8b1f0c5d6dff02d,
         type: 3}
       propertyPath: m_Name
