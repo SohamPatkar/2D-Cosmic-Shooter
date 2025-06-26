@@ -1,54 +1,29 @@
 using CosmicCuration.Bullets;
 using CosmicCuration.Enemy;
+using CosmicCuration.Utilities;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPool
+namespace CosmicCuration.Enemy
 {
-    private EnemyScriptableObject enemyScriptableObject;
-    private EnemyView enemyView;
-    public List<PooledEnemy> pooledEnemies = new List<PooledEnemy>();
-
-    public EnemyPool(EnemyScriptableObject enemyScriptableObject, EnemyView enemyView)
+    public class EnemyPool : GenericObjectPool<EnemyController>
     {
-        this.enemyScriptableObject = enemyScriptableObject;
-        this.enemyView = enemyView;
-    }
+        private EnemyScriptableObject enemyScriptableObject;
+        private EnemyView enemyView;
 
-    public EnemyController GetEnemy()
-    {
-        if (pooledEnemies.Count > 0)
+        public EnemyPool(EnemyScriptableObject enemyScriptableObject, EnemyView enemyView)
         {
-            PooledEnemy pooledEnemy = pooledEnemies.Find(x => !x.isUsed);
-
-            if (pooledEnemy != null)
-            {
-                pooledEnemy.isUsed = true;
-                return pooledEnemy.enemyController;
-            }
+            this.enemyScriptableObject = enemyScriptableObject;
+            this.enemyView = enemyView;
         }
 
-        return CreateEnemy();
+        public EnemyController GetEnemy() => GetItem();
+
+        protected override EnemyController CreateItem()
+        {
+            return new EnemyController(enemyView, enemyScriptableObject.enemyData);
+        }
+
     }
 
-    private EnemyController CreateEnemy()
-    {
-        PooledEnemy pooledEnemy = new PooledEnemy();
-        pooledEnemy.enemyController = new EnemyController(enemyView, enemyScriptableObject.enemyData);
-        pooledEnemy.isUsed = true;
-        pooledEnemies.Add(pooledEnemy);
-        return pooledEnemy.enemyController;
-    }
-
-    public void ReturnEnemyToPool(EnemyController returnEnemy)
-    {
-        PooledEnemy enemy = pooledEnemies.Find(item => item.enemyController.Equals(returnEnemy));
-        enemy.isUsed = false;
-    }
-
-    public class PooledEnemy
-    {
-        public EnemyController enemyController;
-        public bool isUsed;
-    }
 }
